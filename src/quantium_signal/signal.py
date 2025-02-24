@@ -32,7 +32,7 @@ class Signal:
         return create_scraper().post(self.webhook_url, data=message, headers=headers or {})
 
     @staticmethod
-    def run(signals: List["Signal"], smtp_host: str = None, smtp_port: int = None):
+    def run(signals: List["Signal"], smtp_host: str = "0.0.0.0", smtp_port: int = 25):
         class smtp_handler:
             async def handle_DATA(self, _, __, envelope):
                 try:
